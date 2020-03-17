@@ -1,5 +1,4 @@
 
-**/
 #include "HX711.h"
 
 
@@ -41,10 +40,10 @@ void setup() {
   Serial.println(scale.read());                 // print a raw reading from the ADC
 
   Serial.print("read average: \t\t");
-  Serial.println(scale.read_average(20));       // print the average of 20 readings from the ADC
+  Serial.println(scale.read_average(20)*5);       // print the average of 20 readings from the ADC
 
   Serial.print("get value: \t\t");
-  Serial.println(scale.get_value(5));		// print the average of 5 readings from the ADC minus the tare weight, set with tare()
+  Serial.println(scale.get_value(5)*5);		// print the average of 5 readings from the ADC minus the tare weight, set with tare()
 
   Serial.print("get units: \t\t");
   Serial.println(scale.get_units(5), 1);        // print the average of 5 readings from the ADC minus tare weight, divided
@@ -55,9 +54,9 @@ void setup() {
 
 void loop() {
   Serial.print("one reading:\t");
-  Serial.print(scale.get_units(), 1);
+  Serial.print(scale.get_units()*5, 1);
   Serial.print("\t| average:\t");
-  Serial.println(scale.get_units(10), 1);
+  Serial.println(scale.get_units(10)*5, 1);
 
   scale.power_down();			        // put the ADC in sleep mode
   delay(5000);
